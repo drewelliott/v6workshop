@@ -13,8 +13,8 @@ protocol designers. Read hex without panic, drop the NAT tax, understand why
 | `ipv4-vs-ipv6-workshop.pptx` | The 12-slide talk (~40 min), timed section by section |
 | `ipv4-vs-ipv6-lab-workbook.docx` | Self-contained lab + field guide, fill-in exercises, cheat sheet, full answer key |
 | `ipv4-vs-ipv6-errata-and-further-reading.docx` | Optional deep dives (IPsec, death of broadcast, history) + RFC index |
-| `ipv6-lab.clab.yml` | The containerlab topology you deploy in the lab |
-| `srl1.cli`, `srl2.cli` | Complete per-router configs — the lab answer key; optionally pre-loaded to demo the finished state |
+| `lab/ipv6-lab.clab.yml` | The containerlab topology you deploy in the lab |
+| `lab/srl1.cli`, `lab/srl2.cli` | Complete per-router configs — the lab answer key; optionally pre-loaded to demo the finished state |
 | `ipv6-ipv4-timeline.{svg,png}` | Timeline diagram — from RFC 791 to IPv4 exhaustion |
 
 ## The lab
@@ -42,13 +42,13 @@ proving IPv6 routes exactly like IPv4, with no NAT anywhere in the path.
 
 ```bash
 # deploy
-sudo containerlab deploy -t ipv6-lab.clab.yml
+sudo containerlab deploy -t lab/ipv6-lab.clab.yml
 
 # hop onto a router
 docker exec -it clab-ipv6-lab-srl1 sr_cli
 
 # tear down
-sudo containerlab destroy -t ipv6-lab.clab.yml --cleanup
+sudo containerlab destroy -t lab/ipv6-lab.clab.yml --cleanup
 ```
 
 Then follow **Section 3** of the workbook top to bottom. The `✎` marks are blanks to
