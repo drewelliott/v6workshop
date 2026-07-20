@@ -1,0 +1,36 @@
+# srl1.cli — complete dual-stack config for srl1 (the "server-a" side).
+#
+# This is the answer key for the lab. Either let students type the steps by
+# hand (recommended), or pre-load this via the topology's startup-config option
+# to demo the finished state first. See ipv6-lab.clab.yml.
+#
+# srl1 owns:
+#   ethernet-1/1.0  2001:db8:12::1/64  + 192.168.12.1/30   (link to srl2)
+#   lo0.0           2001:db8:a::1/64   + 10.1.1.1/24       (server-a subnet)
+# and routes toward server-b (behind srl2).
+
+enter candidate
+
+# --- dual-stack link to srl2 ---
+set / interface ethernet-1/1 admin-state enable
+set / interface ethernet-1/1 subinterface 0 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv4 address 192.168.12.1/30
+set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
+set / interface ethernet-1/1 subinterface 0 ipv6 address 2001:db8:12::1/64
+
+# --- loopback = server-a subnet ---
+set / interface lo0 subinterface 0 ipv4 address 10.1.1.1/24
+set / interface lo0 subinterface 0 ipv6 address 2001:db8:a::1/64
+
+# --- bind both interfaces to the default routing table ---
+set / network-instance default interface ethernet-1/1.0
+set / network-instance default interface lo0.0
+
+# --- static routes toward server-b (behind srl2) ---
+set / network-instance default next-hop-groups group v6-srl2 nexthop 0 ip-address 2001:db8:12::2
+set / network-instance default next-hop-groups group v4-srl2 nexthop 0 ip-address 192.168.12.2
+set / network-instance default static-routes route 2001:db8:b::/64 next-hop-group v6-srl2
+set / network-instance default static-routes route 10.2.2.0/24 next-hop-group v4-srl2
+
+commit now
