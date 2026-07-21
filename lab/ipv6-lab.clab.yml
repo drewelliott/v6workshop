@@ -3,14 +3,14 @@
 #
 # Topology:
 #
-#     [server-a]                          [server-b]
-#   2001:db8:a::/64                      2001:db8:b::/64
-#   10.1.1.0/24                          10.2.2.0/24
-#        (lo0 on srl1)                        (lo0 on srl2)
-#          |                                     |
+#       [server-a]                           [server-b]
+#    2001:db8:a::/64                      2001:db8:b::/64
+#      10.1.1.0/24                          10.2.2.0/24
+#     (lo0 on srl1)                        (lo0 on srl2)
+#          |                                      |
 #        +-----+   e1-1  2001:db8:12::/64  e1-1 +-----+
-#        |srl1 |-------------------------------|srl2 |
-#        +-----+        192.168.12.0/30        +-----+
+#        |srl1 |--------------------------------|srl2 |
+#        +-----+         192.168.12.0/30        +-----+
 #
 # Two Nokia SR Linux routers connected back-to-back. Each carries a loopback
 # that stands in for a "server / pod subnet". Students bring the link up in
@@ -27,14 +27,14 @@ topology:
     srl1:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux:latest
-      type: ixrd3
+      type: ixr-d3
       # Uncomment to pre-load the finished config (demo mode). Default: students
       # type the steps by hand — see the lab workbook, Section 3.
       # startup-config: srl1.cli
     srl2:
       kind: nokia_srlinux
       image: ghcr.io/nokia/srlinux:latest
-      type: ixrd3
+      type: ixr-d3
       # startup-config: srl2.cli
 
   links:
