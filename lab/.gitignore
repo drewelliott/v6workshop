@@ -1,0 +1,4 @@
+# Containerlab runtime output (generated per-topology on deploy)
+clab-*/
+.*.clab.yml.bak
+*.log
