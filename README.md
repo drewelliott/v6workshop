@@ -10,9 +10,9 @@ protocol designers. Read hex without panic, drop the NAT tax, understand why
 
 | File | What it is |
 |------|-----------|
-| `ipv4-vs-ipv6-workshop.pptx` | The 12-slide talk (~40 min), timed section by section |
-| `ipv4-vs-ipv6-lab-workbook.docx` | Self-contained lab + field guide, fill-in exercises, cheat sheet, full answer key |
-| `ipv4-vs-ipv6-errata-and-further-reading.docx` | Optional deep dives (IPsec, death of broadcast, history) + RFC index |
+| `ipv4-vs-ipv6-workshop.pptx` / [PDF](ipv4-vs-ipv6-workshop.pdf) | The 12-slide talk (~40 min), timed section by section |
+| `ipv4-vs-ipv6-lab-workbook.docx` / [PDF](ipv4-vs-ipv6-lab-workbook.pdf) | Self-contained lab + field guide, fill-in exercises, cheat sheet, full answer key |
+| `ipv4-vs-ipv6-errata-and-further-reading.docx` / [PDF](ipv4-vs-ipv6-errata-and-further-reading.pdf) | Optional deep dives (IPsec, death of broadcast, history) + RFC index |
 | `lab/ipv6-lab.clab.yml` | The containerlab topology you deploy in the lab |
 | `lab/srl1.cli`, `lab/srl2.cli` | Complete per-router configs — the lab answer key; optionally pre-loaded to demo the finished state |
 | `ipv6-ipv4-timeline.{svg,png}` | Timeline diagram — from RFC 791 to IPv4 exhaustion |
