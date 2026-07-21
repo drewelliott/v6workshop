@@ -20,7 +20,9 @@ set / interface ethernet-1/1 subinterface 0 ipv6 admin-state enable
 set / interface ethernet-1/1 subinterface 0 ipv6 address 2001:db8:12::1/64
 
 # --- loopback = server-a subnet ---
+set / interface lo0 subinterface 0 ipv4 admin-state enable
 set / interface lo0 subinterface 0 ipv4 address 10.1.1.1/24
+set / interface lo0 subinterface 0 ipv6 admin-state enable
 set / interface lo0 subinterface 0 ipv6 address 2001:db8:a::1/64
 
 # --- bind both interfaces to the default routing table ---
